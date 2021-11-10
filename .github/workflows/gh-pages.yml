@@ -20,6 +20,9 @@ jobs:
         with:
           hugo-version: 'latest'
 
+      - name: Fix relative paths
+        run: sed -i '' "1s/.*/baseURL = '\/${{github.event.repository.name}}'/" config.toml
+
       - name: Build
         run: hugo --minify
 
